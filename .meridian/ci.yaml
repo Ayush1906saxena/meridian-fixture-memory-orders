@@ -1,0 +1,3 @@
+pack: python
+# Deprecations fail the build here, and the API docs are checked after the tests.
+test: "python -m venv /tmp/venv && . /tmp/venv/bin/activate && pip install -q -r requirements.txt && mkdir -p .meridian-reports && python -m pytest -q -W error::DeprecationWarning --junitxml=.meridian-reports/junit.xml && python -W error::DeprecationWarning tools/check_api_docs.py"
